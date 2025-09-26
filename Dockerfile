@@ -3,13 +3,13 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Copy only requirements first for better cache
-COPY app/requirements.txt .
+COPY requirements.txt .
 
 # Install python dependencies only 
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the app source code
-COPY app/ .
+COPY . .
 
 #EXPOSE 5000
 
@@ -18,6 +18,3 @@ COPY app/ .
 #    PORT=5000
 
 CMD ["python", "app.py"]
-
-
-

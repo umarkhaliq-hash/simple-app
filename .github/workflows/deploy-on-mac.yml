@@ -1,0 +1,29 @@
+name: Build and Run on Mac (Self-Hosted)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-run:
+    runs-on: self-hosted  # runs on Mac
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t simple-app:latest .
+
+      - name: Stop existing container (if any)
+        run: |
+          docker stop simple-app || true
+          docker rm simple-app || true
+
+      - name: Run container
+        run: docker run -d --name simple-app -p 8080:8080 simple-app:latest
+
+      - name: ✅ Done
+        run: echo "App deployed on your Mac"

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: screener-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: screener-app
+  template:
+    metadata:
+      labels:
+        app: screener-app
+    spec:
+      containers:
+      - name: screener-app
+        image: umar877/screener-app:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: APP_NAME
+          value: "devops-screener"
+        - name: APP_ENV
+          value: "development"
+        - name: PORT
+          value: "5000"
+

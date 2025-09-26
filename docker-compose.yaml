@@ -1,0 +1,9 @@
+services:
+  screener:
+    build:
+      context: .
+    container_name: screener-app
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env

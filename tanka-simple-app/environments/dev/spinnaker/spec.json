@@ -1,0 +1,14 @@
+{
+  "apiVersion": "tanka.dev/v1alpha1",
+  "kind": "Environment",
+  "metadata": {
+    "name": "spinnaker-dev"
+  },
+  "spec": {
+    "contextNames": ["minikube"],
+    "namespace": "spinnaker-dev",
+    "resourceDefaults": {},
+    "expectVersions": {}
+  }
+}
+
